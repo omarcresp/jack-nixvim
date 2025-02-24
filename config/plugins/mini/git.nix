@@ -1,0 +1,4 @@
+{
+  plugins.mini.modules.git = {
+  };
+}
