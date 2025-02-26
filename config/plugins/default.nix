@@ -14,4 +14,5 @@
   plugins.sleuth.enable = true;
   plugins.indent-blankline.enable = true;
   plugins.treesitter-textobjects.enable = true;
+  plugins.todo-comments.enable = true;
 }
