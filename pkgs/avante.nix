@@ -1,4 +1,4 @@
-{ lib, stdenv, pkg-config, openssl, rustPlatform, vimUtils, pkgs, avante-src, ... }:
+{ lib, stdenv, pkg-config, openssl, rustPlatform, vimUtils, pkgs, avante-src, makeWrapper, ... }:
 
 let
   version = "unstable-${lib.substring 0 8 avante-src.rev}";
@@ -12,15 +12,21 @@ let
       allowBuiltinFetchGit = true;
     };
 
-    nativeBuildInputs = [ pkg-config ];
-    buildInputs = [ openssl ];
+    nativeBuildInputs = [
+      pkg-config
+      makeWrapper
+      pkgs.perl
+    ];
+    buildInputs = [
+      openssl
+    ];
     buildFeatures = [ "luajit" ];
 
-    # NOTE: Disabled bc nix disables network access
+    # NOTE: Disabled bc nix error on network access
     checkFlags = [
       "--skip=test_hf"
       "--skip=test_public_url"
-      "--skip=test_roundtrip" 
+      "--skip=test_roundtrip"
       "--skip=test_fetch_md"
     ];
   };
@@ -44,11 +50,17 @@ in
       ln -s ${avante-lib}/lib/libavante_repo_map${ext} $out/build/avante_repo_map${ext}
       ln -s ${avante-lib}/lib/libavante_templates${ext} $out/build/avante_templates${ext}
       ln -s ${avante-lib}/lib/libavante_tokenizers${ext} $out/build/avante_tokenizers${ext}
+      ln -s ${avante-lib}/lib/libavante_html2md${ext} $out/build/avante_html2md${ext}
     '';
 
+    # NOTE: Disabled bc nix error on network access
     nvimSkipModule = [
       "avante.providers.azure"
       "avante.providers.copilot"
+      "avante.providers.ollama"
+      "avante.providers.vertex_claude"
+      "avante.providers.gemini"
+      "avante.providers.vertex"
     ];
 
     meta = with lib; {

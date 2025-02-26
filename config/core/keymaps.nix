@@ -28,6 +28,14 @@
      };
     }
     {
+      mode = "v";
+      key = "<leader>sr";
+      action = "\"zy:%s/\\<<C-r>z\\>/<C-r>z/gI<Left><Left><Left>";
+      options = {
+        desc = "[S]earch and [R]eplace selected text";
+     };
+    }
+    {
       mode = "n";
       key = "<leader>x";
       action = "<cmd>!chmod +x %<CR>";

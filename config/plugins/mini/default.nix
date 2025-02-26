@@ -4,7 +4,8 @@
     ./pick.nix
     ./ai.nix
     ./omnibar.nix
-    ./git.nix
+    ./diff.nix
+    ./clue.nix
   ];
 
   plugins.mini = {
@@ -14,8 +15,6 @@
     modules.icons = {};
     modules.surround = {};
     modules.pairs = {};
-
-    # TODO: Configure clue (which key replacement)
-    # modules.clue = {};
+    modules.doc = {};
   };
 }

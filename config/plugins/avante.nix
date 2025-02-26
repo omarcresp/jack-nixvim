@@ -5,35 +5,64 @@
     package = avante-master;
 
     settings = {
-      # provider = "anthropic";
+      provider = "claude";
       auto_suggestions_provider = "gemini";
       cursor_applying_provider = "groq";
+
       file_selector = {
         provider = "mini.pick";
       };
 
-      behaviour = {
-        enable_cursor_planning_mode = true;
+      disabled_tools = [
+        "list_files"
+        "search_files"
+        "read_file"
+        "create_file"
+        "rename_file"
+        "delete_file"
+        "create_dir"
+        "rename_dir"
+        "delete_dir"
+        "bash"
+        "web_search"
+      ];
+      custom_tools.__raw = ''
+        function()
+          return {
+            require("mcphub.extensions.avante").mcp_tool(),
+          }
+        end 
+      '';
+      system_prompt.__raw = ''
+        function()
+          local hub = require("mcphub").get_hub_instance()
+          return hub:get_active_servers_prompt() .. [[
+            Rely on selected_files always as primary source
+            DO NOT COMMIT nor perform git actions unless explicitly asked for with the /commit command
+            NEVER EVER USE TOOLS TO READ FILES that you already have in the selected_files context
+          ]]
+        end
+      '';
+
+      claude = {
+        max_tokens = 8192;
+        thinking = {
+          type = "enabled";
+          budget_tokens = 5000;
+        };
+        temperature = 1;
       };
 
       openai = {
-        model = "gpt-4o";
+        model = "o4-mini";
+        reasoning_effort = "high";
       };
 
       gemini = {
-        model = "gemini-2.0-flash";
+        model = "gemini-2.5-pro-preview-05-06";
       };
 
       vendors = {
-        anthropic = {
-          __inherited_from = "claude";
-          max_tokens = 8192;
-          thinking = {
-            type = "enable";
-            budget_tokens = 2048;
-          };
-          temperature = 1;
-        };
         kluster = {
           __inherited_from = "openai";
           endpoint = "https://api.kluster.ai/v1";
@@ -62,12 +91,13 @@
 
       rag_service = {
         enabled = false;
+        runner = "nix";
       };
 
       dual_boost = {
         enabled = false;
-        first_provider = "qwen";
-        second_provider = "claude";
+        first_provider = "openai";
+        second_provider = "claude-think";
         prompt = ''
           You are an expert code synthesizer. You have been given two different solutions to the same problem.
 
