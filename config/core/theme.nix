@@ -1,6 +1,6 @@
 {
   colorschemes.tokyonight = {
     enable = true;
-    settings.style = "moon";
+    settings.style = "storm";
   };
 }
