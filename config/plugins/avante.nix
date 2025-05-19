@@ -5,7 +5,7 @@
     package = avante-master;
 
     settings = {
-      provider = "claude";
+      provider = "openai";
       auto_suggestions_provider = "gemini";
       cursor_applying_provider = "groq";
 
@@ -55,7 +55,7 @@
 
       openai = {
         model = "o4-mini";
-        reasoning_effort = "high";
+        reasoning_effort = "medium";
       };
 
       gemini = {
