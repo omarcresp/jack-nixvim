@@ -33,22 +33,16 @@
           }
         end 
       '';
-
-      # system_prompt.__raw = ''
-      #   function()
-      #     local hub = require("mcphub").get_hub_instance()
-      #     return hub:get_active_servers_prompt() .. [[
-      #       Rely on selected_files always as primary source
-      #       DO NOT COMMIT nor perform git actions unless explicitly asked for with the /commit command
-      #       NEVER EVER USE TOOLS TO READ FILES that you already have in the selected_files context
-      #     ]]
-      #   end
-      # '';
-
-      ollama = {
-        endpoint = "http://127.0.0.1:1234";
-        model = "deepseek-coder-v2-lite-instruct-mlx";
-      };
+      system_prompt.__raw = ''
+        function()
+          local hub = require("mcphub").get_hub_instance()
+          return hub:get_active_servers_prompt() .. [[
+            Rely on selected_files always as primary source
+            DO NOT COMMIT nor perform git actions unless explicitly asked for with the /commit command
+            NEVER EVER USE TOOLS TO READ FILES that you already have in the selected_files context
+          ]]
+        end
+      '';
 
       claude = {
         max_tokens = 8192;
