@@ -33,16 +33,22 @@
           }
         end 
       '';
-      system_prompt.__raw = ''
-        function()
-          local hub = require("mcphub").get_hub_instance()
-          return hub:get_active_servers_prompt() .. [[
-            Rely on selected_files always as primary source
-            DO NOT COMMIT nor perform git actions unless explicitly asked for with the /commit command
-            NEVER EVER USE TOOLS TO READ FILES that you already have in the selected_files context
-          ]]
-        end
-      '';
+
+      # system_prompt.__raw = ''
+      #   function()
+      #     local hub = require("mcphub").get_hub_instance()
+      #     return hub:get_active_servers_prompt() .. [[
+      #       Rely on selected_files always as primary source
+      #       DO NOT COMMIT nor perform git actions unless explicitly asked for with the /commit command
+      #       NEVER EVER USE TOOLS TO READ FILES that you already have in the selected_files context
+      #     ]]
+      #   end
+      # '';
+
+      ollama = {
+        endpoint = "http://127.0.0.1:1234";
+        model = "deepseek-coder-v2-lite-instruct-mlx";
+      };
 
       claude = {
         max_tokens = 8192;
@@ -78,6 +84,14 @@
           endpoint = "https://api.groq.com/openai/v1/";
           model = "qwen-2.5-coder-32b";
           max_tokens = 28000;
+        };
+
+        lmstudio = {
+          __inherited_from = "openai";
+          endpoint = "http://127.0.0.1:1234/v1";
+          model = "deepseek-coder-v2-lite-instruct-mlx";
+          disable_tools = true;
+          max_tokens = 4096;
         };
 
         groq = {
