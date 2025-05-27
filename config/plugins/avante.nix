@@ -45,10 +45,11 @@
       '';
 
       claude = {
+        model = "claude-sonnet-4-20250514";
         max_tokens = 8192;
         thinking = {
           type = "enabled";
-          budget_tokens = 5000;
+          budget_tokens = 3000;
         };
         temperature = 1;
       };
