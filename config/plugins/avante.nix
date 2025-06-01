@@ -68,7 +68,7 @@
           __inherited_from = "openai";
           endpoint = "https://api.kluster.ai/v1";
           api_key_name = "KLUSTER_API_KEY";
-          model = "deepseek-ai/DeepSeek-R1";
+          model = "deepseek-ai/DeepSeek-R1-0528";
           disable_tools = true;
           max_tokens = 28000;
         };
