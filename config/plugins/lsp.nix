@@ -15,16 +15,16 @@
       html.enable = true;
       emmet_ls.enable = true;
 
-      # denols.enable = true;
-      # denols.autostart = false;
+      denols.enable = true;
+      denols.autostart = false;
       # biome.enable = true;
       # biome.autostart = false;
       # eslint.enable = true;
       # eslint.autostart = false;
       ts_ls.enable = true;
-      # ts_ls.autostart = false;
+      ts_ls.autostart = false;
       angularls.enable = true;
-      # angularls.autostart = false;
+      angularls.autostart = false;
     };
 
     keymaps = {
