@@ -44,26 +44,30 @@
         end
       '';
 
-      claude = {
-        model = "claude-sonnet-4-20250514";
-        max_tokens = 8192;
-        thinking = {
-          type = "enabled";
-          budget_tokens = 3000;
+      providers = {
+        claude = {
+          model = "claude-sonnet-4-20250514";
+          thinking = {
+            type = "enabled";
+            budget_tokens = 3000;
+          };
+          extra_request_body = {
+            temperature = 1;
+            max_tokens = 8192;
+          };
         };
-        temperature = 1;
-      };
 
-      openai = {
-        model = "o4-mini";
-        reasoning_effort = "medium";
-      };
+        openai = {
+          model = "o4-mini";
+          extra_request_body = {
+            reasoning_effort = "medium";
+          };
+        };
 
-      gemini = {
-        model = "gemini-2.5-pro-preview-05-06";
-      };
+        gemini = {
+          model = "gemini-2.5-pro-preview-05-06";
+        };
 
-      vendors = {
         kluster = {
           __inherited_from = "openai";
           endpoint = "https://api.kluster.ai/v1";
@@ -141,7 +145,7 @@
     };
   };
 
-  extraPlugins = [pkgs.vimPlugins.img-clip-nvim];
+  extraPlugins = [ pkgs.vimPlugins.img-clip-nvim ];
   extraConfigLua = ''
     require("img-clip").setup({
         prompt_for_file_name = false,
