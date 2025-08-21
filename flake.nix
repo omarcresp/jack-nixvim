@@ -21,7 +21,7 @@
     smart-flow.inputs.nixpkgs.follows = "nixpkgs";
     smart-flow.inputs.flake-parts.follows = "flake-parts";
 
-    mcphub-nvim.url = "github:omarcresp/mcphub.nvim/feat/nix-flake";
+    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
     mcphub-nvim.inputs.nixpkgs.follows = "nixpkgs";
     mcphub-nvim.inputs.flake-parts.follows = "flake-parts";
 
@@ -31,7 +31,13 @@
   };
 
   outputs =
-    { nixvim, flake-parts, nixpkgs, avante-src, ... }@inputs:
+    {
+      nixvim,
+      flake-parts,
+      nixpkgs,
+      avante-src,
+      ...
+    }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -44,7 +50,7 @@
         { system, pkgs, ... }:
         let
           avante-master = pkgs.callPackage ./pkgs/avante.nix {
-          # avante-master = pkgs.callPackage ./pkgs/avante-local.nix {
+            # avante-master = pkgs.callPackage ./pkgs/avante-local.nix {
             avante-src = inputs.avante-src;
           };
 
@@ -58,7 +64,12 @@
             inherit system;
             module = import ./config;
             extraSpecialArgs = {
-              inherit avante-master mcphub-nvim mcphub smart-flow;
+              inherit
+                avante-master
+                mcphub-nvim
+                mcphub
+                smart-flow
+                ;
             };
           };
 
