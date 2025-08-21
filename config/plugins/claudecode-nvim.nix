@@ -2,6 +2,6 @@
 {
   extraPlugins = [ pkgs.vimPlugins.claudecode-nvim ];
   extraConfigLua = ''
-    require('claudecode.nvim').setup({})
+    require('claudecode').setup({})
   '';
 }
