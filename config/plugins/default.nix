@@ -6,7 +6,7 @@
     ./dressing.nix
     ./harpoon.nix
     # ./avante.nix
-    ./flutter-tools.nix
+    # ./flutter-tools.nix
     ./mini
     # ./mcphub.nix
     ./claudecode-nvim.nix

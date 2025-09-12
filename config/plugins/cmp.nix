@@ -22,14 +22,16 @@
 
   plugins.lspkind = {
     enable = true;
-    cmp = {
-      maxWidth = 50;
-      ellipsisChar = "…";
-      menu = {
-        nvim_lsp = "[LSP]";
-        luasnip = "[Snip]";
-        emoji = "[Emoji]";
-        path = "[Path]";
+    settings = {
+      cmp = {
+        maxWidth = 50;
+        ellipsisChar = "…";
+        menu = {
+          nvim_lsp = "[LSP]";
+          luasnip = "[Snip]";
+          emoji = "[Emoji]";
+          path = "[Path]";
+        };
       };
     };
   };
