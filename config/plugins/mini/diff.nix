@@ -4,6 +4,10 @@
   };
 
   keymaps = [
-    { mode = "n"; key = "ghp"; action = "<cmd>lua MiniDiff.toggle_overlay()<CR>"; }
+    {
+      mode = "n";
+      key = "ghp";
+      action = "<cmd>lua MiniDiff.toggle_overlay()<CR>";
+    }
   ];
 }
