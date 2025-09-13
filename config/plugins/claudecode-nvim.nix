@@ -8,13 +8,6 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>a";
-      action = null;
-      options.desc = "AI/Claude Code";
-    }
-
-    {
-      mode = "n";
       key = "<leader>ac";
       action = "<cmd>ClaudeCode<cr>";
       options.desc = "Toggle Claude";
