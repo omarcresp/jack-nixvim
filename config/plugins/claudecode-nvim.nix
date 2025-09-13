@@ -10,63 +10,63 @@
       mode = "n";
       key = "<leader>a";
       action = null;
-      desc = "AI/Claude Code";
+      options.desc = "AI/Claude Code";
     }
 
     {
       mode = "n";
       key = "<leader>ac";
       action = "<cmd>ClaudeCode<cr>";
-      desc = "Toggle Claude";
+      options.desc = "Toggle Claude";
     }
     {
       mode = "n";
       key = "<leader>af";
       action = "<cmd>ClaudeCodeFocus<cr>";
-      desc = "Focus Claude";
+      options.desc = "Focus Claude";
     }
     {
       mode = "n";
       key = "<leader>ar";
       action = "<cmd>ClaudeCode --resume<cr>";
-      desc = "Resume Claude";
+      options.desc = "Resume Claude";
     }
     {
       mode = "n";
       key = "<leader>aC";
       action = "<cmd>ClaudeCode --continue<cr>";
-      desc = "Continue Claude";
+      options.desc = "Continue Claude";
     }
     {
       mode = "n";
       key = "<leader>am";
       action = "<cmd>ClaudeCodeSelectModel<cr>";
-      desc = "Select Claude model";
+      options.desc = "Select Claude model";
     }
     {
       mode = "n";
       key = "<leader>ab";
       action = "<cmd>ClaudeCodeAdd %<cr>";
-      desc = "Add current buffer";
+      options.desc = "Add current buffer";
     }
     {
       mode = "v";
       key = "<leader>as";
       action = "<cmd>ClaudeCodeSend<cr>";
-      desc = "Send to Claude";
+      options.desc = "Send to Claude";
     }
     # Diff management
     {
       mode = "n";
       key = "<leader>aa";
       action = "<cmd>ClaudeCodeDiffAccept<cr>";
-      desc = "Accept diff";
+      options.desc = "Accept diff";
     }
     {
       mode = "n";
       key = "<leader>ad";
       action = "<cmd>ClaudeCodeDiffDeny<cr>";
-      desc = "Deny diff";
+      options.desc = "Deny diff";
     }
   ];
 }
