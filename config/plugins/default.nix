@@ -9,7 +9,7 @@
     # ./flutter-tools.nix
     ./mini
     # ./mcphub.nix
-    ./claudecode-nvim.nix
+    # ./claudecode-nvim.nix
     # ./smart-flow.nix
   ];
 

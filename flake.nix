@@ -49,10 +49,10 @@
       perSystem =
         { system, pkgs, ... }:
         let
-          avante-master = pkgs.callPackage ./pkgs/avante.nix {
-            # avante-master = pkgs.callPackage ./pkgs/avante-local.nix {
-            avante-src = inputs.avante-src;
-          };
+          # avante-master = pkgs.callPackage ./pkgs/avante.nix {
+          # avante-master = pkgs.callPackage ./pkgs/avante-local.nix {
+          #   avante-src = inputs.avante-src;
+          # };
 
           mcphub-nvim = inputs.mcphub-nvim.packages.${system}.default;
           mcphub = inputs.mcphub.packages.${system}.default;
@@ -64,12 +64,8 @@
             inherit system;
             module = import ./config;
             extraSpecialArgs = {
-              inherit
-                avante-master
-                mcphub-nvim
-                mcphub
-                smart-flow
-                ;
+              inherit mcphub-nvim mcphub smart-flow;
+              # avante-master
             };
           };
 
