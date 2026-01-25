@@ -5,10 +5,10 @@
     ./cmp.nix
     ./dressing.nix
     ./harpoon.nix
-    # ./avante.nix
+    ./avante.nix
     # ./flutter-tools.nix
     ./mini
-    # ./mcphub.nix
+    ./mcphub.nix
     # ./claudecode-nvim.nix
     # ./smart-flow.nix
   ];
